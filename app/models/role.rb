@@ -10,7 +10,7 @@ class Role < ActiveRecord::Base
   
   def after_initialize
     if new_record? 
-    	self.name = name.downcase
+    	self.name = name.downcase.strip
     end
   end
 end
