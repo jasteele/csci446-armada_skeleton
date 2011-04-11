@@ -4,9 +4,15 @@ class Role < ActiveRecord::Base
   
   validates_length_of :name, :minimum => 1
   validates_uniqueness_of :name
+  validates_presence_of :name
 
   has_many :users
-
+  
+  def after_initialize
+    if new_record? 
+    	self.name = name.downcase
+    end
+  end
 end
 
 
