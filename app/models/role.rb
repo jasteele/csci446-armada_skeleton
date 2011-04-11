@@ -13,6 +13,10 @@ class Role < ActiveRecord::Base
     	self.name = name.downcase.strip
     end
   end
+
+  def to_s
+  	 name
+  end
 end
 
 
