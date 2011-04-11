@@ -7,9 +7,10 @@ class User < ActiveRecord::Base
   belongs_to :role, :counter_cache => true
 
   default_scope :include => :role
-
+  
+  
   before_create :assign_default_role
-  validates_presence_of :role
+  validates_presence_of :role, :on => :update
 
   def role_symbols
     [role.name.downcase.to_sym]
@@ -26,6 +27,14 @@ class User < ActiveRecord::Base
   
   def is_admin?
     role_symbols.include?(:administrator) || role_symbols.include?(:developer)
+  end
+  
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def to_s
+    "#{first_name} #{last_name}"
   end
 
   private
