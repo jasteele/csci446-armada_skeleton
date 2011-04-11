@@ -9,7 +9,7 @@ class Role < ActiveRecord::Base
   has_many :users
   
   def after_initialize
-    if new_record? 
+    if new_record? and self.name != nil
     	self.name = name.downcase.strip
     end
   end
