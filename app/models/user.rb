@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   default_scope :include => :role
 
   before_create :assign_default_role
+  validates_presence_of :role
 
   def role_symbols
     [role.name.downcase.to_sym]
