@@ -1,6 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :projectiles, :only => [:show, :index]
 
+  map.resources :projectiles, :only => [:show, :index]
+  map.resources :favorites
+
+
+  map.resources :projectiles, :only => [:show, :index, :new]
 
   map.root :controller => "projectiles", :action => "index"
   map.logout 'logout', :controller => "user_sessions", :action => "destroy"
