@@ -1,3 +1,3 @@
 class Projectile < ActiveRecord::Base
-  attr_accessible :name, :type, :cost, :description
+  attr_accessible :name, :ptype, :cost, :description
 end
