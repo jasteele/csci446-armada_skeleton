@@ -1,8 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :projectiles
+  map.resources :projectiles, :only => [:show, :index, :new]
 
 
-  map.root :controller => "application", :action => "show"
+  map.root :controller => "projectiles", :action => "index"
   map.logout 'logout', :controller => "user_sessions", :action => "destroy"
   map.login 'login', :controller => "user_sessions", :action => "new"
   map.resources :user_sessions, :only => [:new, :create, :destroy]
@@ -14,12 +14,14 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :roles
     admin.resources :users
+    admin.resources :projectiles
     admin.root :controller => 'admin', :action => 'index'
   end
 
   map.namespace :members do |members|
     members.resources :users, :only => [:show, :edit, :update]
-    members.root :controller => 'members', :action => 'index'
+    members.resources :projectiles
+    members.root :controller => 'projectiles', :action => 'index'
   end
 
 end
