@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :projectiles
+
 
   map.root :controller => "application", :action => "show"
   map.logout 'logout', :controller => "user_sessions", :action => "destroy"
