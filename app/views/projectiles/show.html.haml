@@ -1,0 +1,22 @@
+- content_for :title do
+  Projectile
+
+%p
+  %strong Name:
+  =h @projectile.name
+%p
+  %strong Type:
+  =h @projectile.type
+%p
+  %strong Cost:
+  =h @projectile.cost
+%p
+  %strong Description:
+  =h @projectile.description
+
+%p
+  = link_to "Edit", edit_projectile_path(@projectile)
+  |
+  = link_to "Destroy", @projectile, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", projectiles_path

@@ -1,0 +1,11 @@
+one:
+  name: MyString
+  type: MyString
+  cost: 
+  description: MyString
+
+two:
+  name: MyString
+  type: MyString
+  cost: 
+  description: MyString
