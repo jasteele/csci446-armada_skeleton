@@ -1,0 +1,9 @@
+- content_for :title do
+  Edit Projectile
+
+= render :partial => 'form'
+
+%p
+  = link_to "Show", projectile_path(@projectile)
+  |
+  = link_to "View All", projectiles_path

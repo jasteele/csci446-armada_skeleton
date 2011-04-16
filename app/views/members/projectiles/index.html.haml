@@ -1,0 +1,20 @@
+- content_for :title do
+  Projectiles
+
+%table
+  %tr
+    %th Name
+    %th Type
+    %th Cost
+    %th Description
+  - for projectile in @projectiles
+    %tr
+      %td= h projectile.name
+      %td= h projectile.ptype
+      %td= h projectile.cost
+      %td= h projectile.description
+      %td= link_to 'Show', members_projectile_path(projectile)
+      %td= link_to 'Edit', edit_members_projectile_path(projectile)
+      %td= link_to 'Destroy', members_projectile_path(projectile), :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Projectile", new_members_projectile_path

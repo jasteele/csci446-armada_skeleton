@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :projectiles, :only => [:show, :index, :new]
+  map.resources :projectiles, :only => [:show, :index]
 
 
   map.root :controller => "projectiles", :action => "index"

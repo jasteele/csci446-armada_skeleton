@@ -1,6 +1,6 @@
 %ul.menubar
   %li= link_to 'home', home_url_for(current_user), :title => 'Home'
   = admin_menu_items(current_user)
-  %li= link_to 'all projectiles', admin_projectiles_path, :title => 'All Projectiles'
+  %li= link_to 'all projectiles', members_projectiles_path, :title => 'All Projectiles'
   %li= link_to 'my projectiles', '#', :title => 'My Projectiles'
   %li= link_to 'my favorites', '#', :title => 'My Favorites'

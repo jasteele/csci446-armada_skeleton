@@ -1,0 +1,20 @@
+- form_for [:admin, @projectile] do |f|
+  = f.error_messages
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+  %p
+    = f.label :type
+    %br
+    = f.text_field :ptype
+  %p
+    = f.label :cost
+    %br
+    = f.text_field :cost
+  %p
+    = f.label :description
+    %br
+    = f.text_field :description
+  %p
+    = f.submit
