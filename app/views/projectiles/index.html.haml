@@ -1,20 +1,18 @@
 - content_for :title do
   Projectiles
 
-%table
-  %tr
-    %th Name
-    %th Type
-    %th Cost
-    %th Description
-  - for projectile in @projectiles
-    %tr
-      %td= h projectile.name
-      %td= h projectile.ptype
-      %td= h projectile.cost
-      %td= h projectile.description
-      %td= link_to 'Show', projectile
-      %td= link_to 'Edit', edit_projectile_path(projectile)
-      %td= link_to 'Destroy', projectile, :confirm => 'Are you sure?', :method => :delete
+%p#newLink= link_to "New Projectile", new_projectile_path
 
-%p= link_to "New Projectile", new_projectile_path
+%ul
+  - for projectile in @projectiles
+    %li
+      = link_to projectile.name, projectile
+      by 
+      = projectile.user_id
+      (
+      = pluralize( projectile.cost, 'ArmadaBuck')
+      )
+      %p= h projectile.description
+      /%td= link_to 'Edit', edit_projectile_path(projectile)
+      /%td= link_to 'Destroy', projectile, :confirm => 'Are you sure?', :method => :delete
+
