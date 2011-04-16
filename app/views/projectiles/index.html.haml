@@ -5,20 +5,14 @@
 
 %ul
   - for projectile in @projectiles
-    %tr
-      %td= h projectile.name
-      %td= h projectile.ptype
-      %td= h projectile.cost
-      %td= h projectile.description
-      %td= link_to 'Show', projectile
-
     %li
       = link_to projectile.name, projectile
       by 
-      = projectile.user_id
+      = projectile.user
       (
       = pluralize( projectile.cost, 'ArmadaBuck')
       )
+      = link_to image_tag("icon_small_show.png"), projectile
       %p= h projectile.description
       /%td= link_to 'Edit', edit_projectile_path(projectile)
       /%td= link_to 'Destroy', projectile, :confirm => 'Are you sure?', :method => :delete

@@ -3,6 +3,7 @@ authorization do
   role :member do
     has_permission_on :members_members, :to => :read
     has_permission_on :members_projectiles, :to => :manage
+    has_permission_on [:admin_projectiles], :to => :manage do if_attribute :id => is {user.id} end
   end
   role :administrator do
     includes :member
