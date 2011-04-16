@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110416190142) do
+ActiveRecord::Schema.define(:version => 20110416194913) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(:version => 20110416190142) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "projectile_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "projectiles", :force => true do |t|
     t.string   "name"
@@ -77,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20110416190142) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
   add_index "users", ["role_id"], :name => "index_users_on_role_id"
 
   create_table "versions", :force => true do |t|

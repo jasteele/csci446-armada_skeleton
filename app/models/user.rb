@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   
   belongs_to :role, :counter_cache => true
 
+  has_many :favorites
+  has_many :projectiles, :through => :favorites
+
   default_scope :include => :role
   
   
