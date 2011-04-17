@@ -3,6 +3,8 @@
 
 %p#newLink= link_to "New Projectile", new_projectile_path
 
+%div#status
+
 %ul
   - for projectile in @projectiles
     %li
@@ -13,6 +15,11 @@
       = pluralize( projectile.cost, 'ArmadaBuck')
       )
       = link_to image_tag("icon_small_show.png"), projectile
+      - form_remote_for :favorite, :url => favorites_path, :method => form_method do |f| 
+        = f.hidden_field :projectile_id, :value => projectile.id
+        = f.hidden_field :user_id, :value => current_user.id
+        = image_submit_tag( 'icon_small_star_inactive.png', :id => 'img_' + projectile.id.to_s)
+      %div{:id => 'status_' + projectile.id.to_s}
       %p= h projectile.description
       - if projectile.user == current_user
         = link_to 'Edit', edit_members_projectile_path(projectile)
