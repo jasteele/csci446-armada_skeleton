@@ -41,6 +41,6 @@ class Members::ProjectilesController < Members::MembersController
     @projectile = Projectile.find(params[:id])
     @projectile.destroy
     flash[:notice] = "Successfully destroyed projectile."
-    redirect_to projectiles_url
+    redirect_to members_projectiles_url
   end
 end
