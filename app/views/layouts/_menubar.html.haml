@@ -2,5 +2,5 @@
   %li= link_to 'home', projectiles_path, :title => 'Home'
   = admin_menu_items(current_user)
   %li= link_to 'all projectiles', projectiles_path, :title => 'All Projectiles'
-  %li= link_to 'my projectiles', '#', :title => 'My Projectiles'
+  %li= link_to 'my projectiles', my_projectiles_members_projectiles_path, :title => 'My Projectiles'
   %li= link_to 'my favorites', '#', :title => 'My Favorites'

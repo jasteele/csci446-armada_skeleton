@@ -1,5 +1,6 @@
 class Members::ProjectilesController < Members::MembersController
   filter_resource_access
+  filter_access_to :my_projectiles
   def index
     @projectile = Projectile.all
   end
@@ -42,5 +43,9 @@ class Members::ProjectilesController < Members::MembersController
     @projectile.destroy
     flash[:notice] = "Successfully destroyed projectile."
     redirect_to projectiles_url
+  end
+
+  def my_projectiles
+    @projectile = Projectile.find(:all, :conditions => "user_id = #{current_user.id}")  
   end
 end

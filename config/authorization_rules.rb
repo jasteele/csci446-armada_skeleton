@@ -16,7 +16,7 @@ authorization do
     has_permission_on :admin_users, :to => :manage
     has_permission_on :admin_roles, :to => :manage
     has_permission_on :admin_projectiles, :to => :manage
-    has_permission_on :members_projectiles, :to => :manage
+    has_permission_on :members_projectiles, :to => [:manage, :my_projectiles]
     has_permission_on :projectiles, :to => :manage
   end
   role :developer do
