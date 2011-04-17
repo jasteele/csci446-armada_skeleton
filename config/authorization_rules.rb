@@ -11,7 +11,6 @@ authorization do
     end
   end
   role :administrator do
-    includes :member
     has_permission_on :admin_admin, :to => :read
     has_permission_on :admin_users, :to => :manage
     has_permission_on :admin_roles, :to => :manage

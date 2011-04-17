@@ -16,13 +16,13 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :roles
     admin.resources :users
     admin.resources :projectiles, :only => 'index'
-    admin.root :controller => 'admin', :action => 'index'
+    admin.root :controller => 'projectiles', :action => 'index'
   end
 
   map.namespace :members do |members|
     members.resources :users, :only => [:show, :edit, :update]
-    members.resources :projectiles
-    members.root :controller => 'projectiles', :action => 'index'
+    members.resources :projectiles, :only => [:edit, :update, :new, :create, :destroy]
+    #members.root :controller => 'projectiles', :action => 'index'
   end
 
 end

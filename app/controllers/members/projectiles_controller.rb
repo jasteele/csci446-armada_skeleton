@@ -17,7 +17,7 @@ class Members::ProjectilesController < Members::MembersController
     @projectile.user = current_user
     if @projectile.save
       flash[:notice] = "Successfully created projectile."
-      redirect_to members_projectile_path(@projectile)
+      redirect_to projectile_path(@projectile)
     else
       render :action => 'new'
     end
@@ -31,7 +31,7 @@ class Members::ProjectilesController < Members::MembersController
     @projectile = Projectile.find(params[:id])
     if @projectile.update_attributes(params[:projectile])
       flash[:notice] = "Successfully updated projectile."
-      redirect_to members_projectile_path
+      redirect_to projectile_path(@projectile)
     else
       render :action => 'edit'
     end
@@ -41,6 +41,6 @@ class Members::ProjectilesController < Members::MembersController
     @projectile = Projectile.find(params[:id])
     @projectile.destroy
     flash[:notice] = "Successfully destroyed projectile."
-    redirect_to members_projectiles_url
+    redirect_to projectiles_url
   end
 end
