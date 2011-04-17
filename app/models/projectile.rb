@@ -3,7 +3,7 @@ class Projectile < ActiveRecord::Base
   belongs_to :user
   has_many :users, :through => :favorites
 
-  attr_accessible :name, :ptype, :cost, :description, :user, :photo
+  #attr_accessible :name, :ptype, :cost, :description, :user, :photo, :attachment
   validates_presence_of :name, :ptype, :cost, :description
   validates_length_of :name, :minimum => 5
   validates_numericality_of :cost, :greater_than => 0
@@ -13,6 +13,6 @@ class Projectile < ActiveRecord::Base
   					:url => "/assets/:class/:attachment/:id/:style/:filename",
   					:default_url => "/images/pirate_canon.jpg"
 
-  #validates_attachment_presence :photo
+  validates_attachment_presence :photo
   validates_attachment_size :photo, :less_than => 4.megabytes
 end

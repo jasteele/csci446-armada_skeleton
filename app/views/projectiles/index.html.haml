@@ -6,6 +6,7 @@
 %ul
   - for projectile in @projectile
     %li
+      = image_tag projectile.photo.url
       = link_to projectile.name, projectile
       by 
       = projectile.user
