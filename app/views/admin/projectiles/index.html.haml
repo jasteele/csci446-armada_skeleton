@@ -13,8 +13,8 @@
       %td= h projectile.ptype
       %td= h projectile.cost
       %td= h projectile.description
-      %td= link_to 'Show', admin_projectile_path(projectile)
-      %td= link_to 'Edit', edit_admin_projectile_path(projectile)
-      %td= link_to 'Destroy', admin_projectile_path(projectile), :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Show', members_projectile_path(projectile)
+      %td= link_to 'Edit', edit_members_projectile_path(projectile)
+      %td= link_to 'Destroy', members_projectile_path(projectile), :confirm => 'Are you sure?', :method => :delete
 
-%p= link_to "New Projectile", new_admin_projectile_path
+%p= link_to "New Projectile", new_members_projectile_path

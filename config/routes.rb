@@ -15,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :roles
     admin.resources :users
-    admin.resources :projectiles
+    admin.resources :projectiles, :only => 'index'
     admin.root :controller => 'admin', :action => 'index'
   end
 

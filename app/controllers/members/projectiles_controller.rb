@@ -14,6 +14,7 @@ class Members::ProjectilesController < Members::MembersController
 
   def create
     @projectile = Projectile.new(params[:projectile])
+    @projectile.user = current_user
     if @projectile.save
       flash[:notice] = "Successfully created projectile."
       redirect_to members_projectile_path(@projectile)
