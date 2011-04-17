@@ -22,7 +22,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :members do |members|
     members.resources :users, :only => [:show, :edit, :update]
     members.resources :projectiles, :only => [:edit, :update, :new, :create, :destroy]
-    #members.root :controller => 'projectiles', :action => 'index'
+    members.root :controller => 'members', :action => 'index'
   end
 
 end
