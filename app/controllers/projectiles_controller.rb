@@ -1,21 +1,22 @@
 class ProjectilesController < ApplicationController
   
   before_filter :require_user, :except => [:index, :show]
-
+  filter_resource_access
   def index
     @projectile = Projectile.all
   end
 
   def show
-    @projectile = Projectile.find(params[:id])
+    #@projectile = Projectile.find(params[:id])
   end
 
   def new
-    @projectile = Projectile.new
+    #@projectile = Projectile.new
   end
 
   def create
-    @projectile = Projectile.new(params[:projectile])
+    #@projectile = Projectile.new(params[:projectile])
+    @projectile.user = current_user
     if @projectile.save
       flash[:notice] = "Successfully created projectile."
       redirect_to @projectile
@@ -25,11 +26,11 @@ class ProjectilesController < ApplicationController
   end
 
   def edit
-    @projectile = Projectile.find(params[:id])
+    #@projectile = Projectile.find(params[:id])
   end
 
   def update
-    @projectile = Projectile.find(params[:id])
+    #@projectile = Projectile.find(params[:id])
     if @projectile.update_attributes(params[:projectile])
       flash[:notice] = "Successfully updated projectile."
       redirect_to @projectile

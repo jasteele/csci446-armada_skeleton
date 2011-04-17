@@ -10,7 +10,7 @@ class Members::MembersController < ApplicationController
     def permission_denied
       flash[:error] = "You do not have access to #{request.path}."
       respond_to do |format|
-        format.html { redirect_to home_root_url(current_user) }
+        format.html { redirect_to projectiles_path }
         format.xml { head :unauthorized }
         format.js { head :unauthorized }
       end

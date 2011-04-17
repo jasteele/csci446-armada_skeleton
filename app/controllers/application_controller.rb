@@ -3,11 +3,17 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   filter_parameter_logging :password
   helper_method :current_user_session, :current_user, :home_url_for
+  before_filter { |c| Authorization.current_user = c.current_user }
   # A simple route for the application home page or root_url.
   def show
     render
   end
 
+  def current_user
+    return @current_user if defined?(@current_user)
+    @current_user = current_user_session && current_user_session.user
+    return @current_user
+  end
   protected
   
     def home_url_for(user)
@@ -23,11 +29,7 @@ class ApplicationController < ActionController::Base
       return @current_user_session
     end
 
-    def current_user
-      return @current_user if defined?(@current_user)
-      @current_user = current_user_session && current_user_session.user
-      return @current_user
-    end
+
         
      def require_user
        unless current_user

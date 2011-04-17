@@ -25,7 +25,7 @@
           /= image_submit_tag( 'icon_small_star_inactive.png', :id => 'img_' + projectile.id.to_s)
       %div{:id => 'status_' + projectile.id.to_s}
       %p= h projectile.description
-      - permitted_to? :edit, projectile do
+      - if current_user == projectile.user || (has_role?(:administrator) || has_role?(:developer))
         = link_to 'Edit', edit_members_projectile_path(projectile)
         = link_to 'Destroy', members_projectile_path(projectile), :confirm => 'Are you sure?', :method => :delete
 

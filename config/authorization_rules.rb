@@ -4,8 +4,9 @@ authorization do
     has_permission_on :projectiles, :to => :read
   end
   role :member do
+    includes :guest
     has_permission_on :members_members, :to => :read
-    has_permission_on :members_projectiles, :to => :read
+    has_permission_on :members_projectiles, :to => :create
     has_permission_on :members_projectiles, :to => [:update, :delete] do
       if_attribute :user => is {user}
     end
@@ -16,6 +17,7 @@ authorization do
     has_permission_on :admin_roles, :to => :manage
     has_permission_on :admin_projectiles, :to => :manage
     has_permission_on :members_projectiles, :to => :manage
+    has_permission_on :projectiles, :to => :manage
   end
   role :developer do
     includes :administrator
