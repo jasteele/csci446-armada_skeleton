@@ -1,6 +1,7 @@
 - content_for :title do
   Projectile
-
+%p
+  = image_tag @projectile.photo.url(:avatar)
 %p
   %strong Name:
   =h @projectile.name
