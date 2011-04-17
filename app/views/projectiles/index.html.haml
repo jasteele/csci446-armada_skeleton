@@ -1,10 +1,10 @@
 - content_for :title do
   Projectiles
 
-%p#newLink= link_to "New Projectile", new_projectile_path
+%p#newLink= link_to "New Projectile", login_path
 
 %ul
-  - for projectile in @projectiles
+  - for projectile in @projectile
     %li
       = link_to projectile.name, projectile
       by 

@@ -15,8 +15,8 @@
   =h @projectile.description
 
 %p
-  /= link_to "Edit", edit_projectile_path(@projectile)
+  = link_to "Edit", edit_admin_projectile_path(@projectile)
   |
-  /= link_to "Destroy", @projectile, :confirm => 'Are you sure?', :method => :delete
+  = link_to "Destroy", admin_projectile_path(@projectile), :confirm => 'Are you sure?', :method => :delete
   |
-  = link_to "View All", projectiles_path
+  = link_to "View All", admin_projectiles_path

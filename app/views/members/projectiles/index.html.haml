@@ -1,20 +1,20 @@
 - content_for :title do
   Projectiles
 
-%p#newLink= link_to "New Projectile", new_projectile_path
+%p#newLink= link_to "New Projectile", new_members_projectile_path
 
 %ul
-  - for projectile in @projectiles
+  - for projectile in @projectile
     %li
-      = link_to projectile.name, projectile
+      = link_to projectile.name, members_projectile_path(projectile)
       by 
       = projectile.user
       (
       = pluralize( projectile.cost, 'ArmadaBuck')
       )
-      = link_to image_tag("icon_small_show.png"), projectile
+      = link_to image_tag("icon_small_show.png"), members_projectile_path(projectile)
       %p= h projectile.description
-      - if projectile.user == current_user
+      - permitted_to? :edit, :projectile do
         = link_to 'Edit', edit_members_projectile_path(projectile)
-        = link_to 'Destroy', projectile, :confirm => 'Are you sure?', :method => :delete
+        = link_to 'Destroy', members_projectile_path(projectile), :confirm => 'Are you sure?', :method => :delete
 

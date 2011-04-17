@@ -1,6 +1,7 @@
 class Members::ProjectilesController < Members::MembersController
+  filter_resource_access
   def index
-    @projectiles = Projectile.all
+    @projectile = Projectile.all
   end
 
   def show
@@ -29,7 +30,7 @@ class Members::ProjectilesController < Members::MembersController
     @projectile = Projectile.find(params[:id])
     if @projectile.update_attributes(params[:projectile])
       flash[:notice] = "Successfully updated projectile."
-      redirect_to @projectile
+      redirect_to members_projectile_path
     else
       render :action => 'edit'
     end

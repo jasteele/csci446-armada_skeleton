@@ -1,9 +1,9 @@
 class ProjectilesController < ApplicationController
-  filter_access_to :all
+  
   before_filter :require_user, :except => [:index, :show]
 
   def index
-    @projectiles = Projectile.all
+    @projectile = Projectile.all
   end
 
   def show

@@ -1,4 +1,5 @@
 class Admin::ProjectilesController < Admin::AdminController
+  filter_resource_access
   def index
     @projectiles = Projectile.all
   end
@@ -29,7 +30,7 @@ class Admin::ProjectilesController < Admin::AdminController
     @projectile = Projectile.find(params[:id])
     if @projectile.update_attributes(params[:projectile])
       flash[:notice] = "Successfully updated projectile."
-      redirect_to @projectile
+      redirect_to admin_projectile_path
     else
       render :action => 'edit'
     end
@@ -39,6 +40,6 @@ class Admin::ProjectilesController < Admin::AdminController
     @projectile = Projectile.find(params[:id])
     @projectile.destroy
     flash[:notice] = "Successfully destroyed projectile."
-    redirect_to projectiles_url
+    redirect_to admin_projectiles_url
   end
 end
