@@ -18,6 +18,6 @@ class Projectile < ActiveRecord::Base
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
                     :path => "cs446/elephants/#{Rails.env}/:attachment/:id/:style.:extension"
 
-  #validates_attachment_presence :photo
   validates_attachment_size :photo, :less_than => 4.megabytes
+
 end
