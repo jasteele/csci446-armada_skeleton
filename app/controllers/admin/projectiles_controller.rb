@@ -1,9 +1,10 @@
 class Admin::ProjectilesController < Admin::AdminController
   filter_resource_access
-  def index
-    @projectiles = Projectile.all
-  end
+ 
 
+  def index
+    @projectiles = Projectile.paginate(:page => params[:page], :per_page => 20)
+  end
   def show
     @projectile = Projectile.find(params[:id])
   end

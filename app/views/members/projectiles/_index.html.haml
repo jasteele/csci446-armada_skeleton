@@ -4,7 +4,8 @@
   %p#newLink= link_to "New Projectile", login_path
 %div#status
 %p#projectile_count 
-  #{pluralize(@projectile.size, 'projectile')} as of #{Time.now.to_s(:normal)}
+  #{pluralize(@num_projectiles, 'projectile')} as of #{Time.now.to_s(:normal)}
+= will_paginate @projectile
 %ul
   - for projectile in @projectile
     %li
