@@ -5,7 +5,7 @@
 %div#status
 %p#projectile_count 
   #{pluralize(@projectile.size, 'projectile')} as of #{Time.now.to_s(:normal)}
-%u
+%ul
   - for projectile in @projectile
     %li
       = image_tag projectile.photo.url(:thumb)
