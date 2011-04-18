@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(:version => 20110418193612) do
   create_table "projectiles", :force => true do |t|
     t.string   "name"
     t.string   "ptype"
-    t.text     "description",        :limit => 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "cost"
@@ -45,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20110418193612) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.text     "description"
   end
 
   create_table "roles", :force => true do |t|
