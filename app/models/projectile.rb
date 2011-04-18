@@ -8,10 +8,15 @@ class Projectile < ActiveRecord::Base
   validates_length_of :name, :minimum => 5
   validates_numericality_of :cost, :greater_than => 0
   
-  has_attached_file :photo, 
-  					:styles => {:small => "150x150", :avatar => "100x100" },
-  					:url => "/assets/:class/:attachment/:id/:style/:filename",
-  					:default_url => "/images/pirate_canon.jpg"
+  has_attached_file :photo,
+                    :styles => {
+                      :thumb => ["72x72#"],
+                      :medium => ["300x300#"]
+                    },
+                    :default_url => '/images/pirate_canon.png',
+                    :storage => :s3,
+                    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+                    :path => "cs446/elephants/#{Rails.env}/:attachment/:id/:style.:extension"
 
   validates_attachment_presence :photo
   validates_attachment_size :photo, :less_than => 4.megabytes
