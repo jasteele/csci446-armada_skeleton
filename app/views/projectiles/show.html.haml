@@ -20,16 +20,17 @@
 
 %p created by #{@projectile.user} on #{@projectile.created_at.strftime("%b %d, %Y")}
 
-%p
+#photo-wrapper
   = image_tag @projectile.photo.url(:medium)
-%p
-  %strong Name:
-  =h @projectile.name
-%p
-  %strong Type:
-  =h @projectile.ptype
-%p
-  %strong Cost:
-  =h @projectile.cost
-%p
-  =h @projectile.description
+#main
+  %p
+    %strong Name:
+    =h @projectile.name
+  %p
+    %strong Type:
+    =h @projectile.ptype
+  %p
+    %strong Cost:
+    =h @projectile.cost
+  %p
+    =h @projectile.description

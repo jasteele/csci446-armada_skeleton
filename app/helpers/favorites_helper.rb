@@ -20,6 +20,16 @@ def form_method(projectile_id, user_id)
   end
 end
 
+# Return 
+def form_action(projectile_id, user_id) 
+  fav = Favorite.find(:first, :conditions => ["projectile_id = ? and user_id = ?", projectile_id, user_id])
+  if fav.nil?
+    favorites_path
+  else
+    url_for( fav )
+  end
+end
+
 # Return the a gold or silver star depending on if the user has
 # favorited the projectile
 def fav_img_tag(projectile_id, user_id)
