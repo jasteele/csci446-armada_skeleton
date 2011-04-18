@@ -3,8 +3,9 @@
 - else
   %p#newLink= link_to "New Projectile", login_path
 %div#status
-
-%ul
+%p#projectile_count 
+  #{pluralize(@projectile.size, 'projectile')} as of #{Time.now.to_s(:normal)}
+%u
   - for projectile in @projectile
     %li
       = image_tag projectile.photo.url(:small)
