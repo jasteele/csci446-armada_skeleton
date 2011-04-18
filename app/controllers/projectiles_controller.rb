@@ -3,7 +3,7 @@ class ProjectilesController < ApplicationController
   before_filter :require_user, :except => [:index, :show]
   filter_resource_access
   def index
-    @projectile = Projectile.paginate(:page => params[:page], :per_page => 2)
+    @projectile = Projectile.paginate(:page => params[:page], :per_page => 5)
     @num_projectiles = Projectile.count
   end
 
