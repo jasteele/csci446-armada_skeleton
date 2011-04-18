@@ -21,7 +21,7 @@
 %p created by #{@projectile.user} on #{@projectile.created_at.strftime("%b %d, %Y")}
 
 %p
-  = image_tag @projectile.photo.url(:avatar)
+  = image_tag @projectile.photo.url(:medium)
 %p
   %strong Name:
   =h @projectile.name

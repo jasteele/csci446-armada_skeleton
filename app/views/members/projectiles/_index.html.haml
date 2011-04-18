@@ -8,7 +8,7 @@
 %u
   - for projectile in @projectile
     %li
-      = image_tag projectile.photo.url(:small)
+      = image_tag projectile.photo.url(:thumb)
       = link_to projectile.name, projectile
       by 
       = projectile.user

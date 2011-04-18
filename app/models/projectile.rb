@@ -10,14 +10,14 @@ class Projectile < ActiveRecord::Base
   
   has_attached_file :photo,
                     :styles => {
-                      :thumb => ["72x72#"],
+                      :thumb => ["100x100#"],
                       :medium => ["300x300#"]
                     },
-                    :default_url => '/images/pirate_canon.png',
+                    :default_url => '/images/pirate_canon.jpg',
                     :storage => :s3,
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
                     :path => "cs446/elephants/#{Rails.env}/:attachment/:id/:style.:extension"
 
-  validates_attachment_presence :photo
+  #validates_attachment_presence :photo
   validates_attachment_size :photo, :less_than => 4.megabytes
 end
