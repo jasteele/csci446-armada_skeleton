@@ -2,7 +2,7 @@
   Projectile
 %h2= @projectile.name
 
-%p
+%div
   = link_to image_tag('icon_small_larrow.png'), projectiles_path
   = link_to "Back to list", projectiles_path
   - if current_user == @projectile.user || (has_role?(:administrator) || has_role?(:developer))
@@ -13,6 +13,7 @@
   -if current_user
     = link_to image_tag('icon_small_new.png'), new_members_projectile_path
     = link_to "New Projectile", new_members_projectile_path
+    = render :partial => 'favbutton', :locals => { :projectile => @projectile, :current_user => @current_user }
   - else  
     = link_to image_tag('icon_small_new.png'), login_path
     = link_to "New Projectile", login_path

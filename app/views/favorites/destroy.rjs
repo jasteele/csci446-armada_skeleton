@@ -1,8 +1,9 @@
 #page.replace_html :status, flash[:notice]
 status_id = 'status_' + @favorite.projectile_id.to_s
 img_id = 'img_' + @favorite.projectile_id.to_s
+form_id = 'fav_' + @favorite.projectile_id.to_s
+page.replace form_id, :partial => 'projectiles/favbutton', :locals => {:projectile => @favorite.projectile, :curent_user => @favorite.user }
 page.replace_html status_id, flash[:notice]
 page[status_id].show
 page.visual_effect :fade, status_id, :duration => '4'
-page.replace img_id, image_submit_tag('icon_small_star_inactive.png', :id => img_id)
 flash.discard

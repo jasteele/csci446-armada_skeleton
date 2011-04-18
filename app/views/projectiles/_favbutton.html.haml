@@ -1,0 +1,6 @@
+- form_remote_for :favorite, :url => form_action(projectile.id, current_user.id), :method => form_method(projectile.id, current_user.id), :html => {:id => 'fav_' + projectile.id.to_s } do |f|
+  = f.hidden_field :projectile_id, :value => projectile.id
+  = f.hidden_field :user_id, :value => current_user.id
+  = fav_img_tag( projectile.id, current_user.id )
+%div{:id => 'status_' + projectile.id.to_s}
+
