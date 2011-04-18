@@ -23,7 +23,7 @@ ActionController::Routing::Routes.draw do |map|
     members.resources :users, :only => [:show, :edit, :update]
     members.resources :projectiles, 
                       :only => [:edit, :update, :new, :create, :destroy],
-                      :collection => { :my_projectiles => :get}
+                      :collection => { :my_projectiles => :get, :my_favorites => :get}
     members.root :controller => 'members', :action => 'index'
   
   end

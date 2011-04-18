@@ -1,30 +1,4 @@
 - content_for :title do
   My Projectiles
-- if current_user
-  %p#newLink= link_to "New Projectile", new_members_projectile_path
-- else
-  %p#newLink= link_to "New Projectile", login_path
-%div#status
 
-%ul
-  - for projectile in @projectile
-    %li
-      = image_tag projectile.photo.url(:small)
-      = link_to projectile.name, projectile
-      by 
-      = projectile.user
-      (
-      = pluralize( projectile.cost, 'ArmadaBuck')
-      )
-      = link_to image_tag("icon_small_show.png"), projectile_path(projectile)
-      - if current_user == projectile.user || (has_role?(:administrator) || has_role?(:developer))
-        =link_to image_tag('icon_small_edit.png'), edit_members_projectile_path(projectile)
-        = link_to image_tag('icon_small_delete.png'), members_projectile_path(projectile), :confirm => 'Are you sure?', :method => :delete
-      - if current_user
-        - form_remote_for :favorite, :url => favorites_path, :method => form_method(projectile.id, current_user.id) do |f| 
-          = f.hidden_field :projectile_id, :value => projectile.id
-          = f.hidden_field :user_id, :value => current_user.id
-          = fav_img_tag( projectile.id, current_user.id )
-          /= image_submit_tag( 'icon_small_star_inactive.png', :id => 'img_' + projectile.id.to_s)
-      %div{:id => 'status_' + projectile.id.to_s}
-      %p= h projectile.description
+= render :partial => 'index'

@@ -1,6 +1,6 @@
 class Members::ProjectilesController < Members::MembersController
   filter_resource_access
-  filter_access_to :my_projectiles
+  filter_access_to :my_projectiles, :my_favorites
   def index
     @projectile = Projectile.all
   end
@@ -47,5 +47,9 @@ class Members::ProjectilesController < Members::MembersController
 
   def my_projectiles
     @projectile = Projectile.find(:all, :conditions => "user_id = #{current_user.id}")  
+  end
+
+  def my_favorites
+    @projectile = Projectile.find(:all, :conditions => "favorites.user_id = #{current_user.id}", :include => :favorites)
   end
 end
