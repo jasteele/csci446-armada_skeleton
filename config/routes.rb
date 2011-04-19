@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.resources :projectiles, :only => [:show, :index]
+  map.resources :projectiles, :only => [:show, :index, :description]
   map.resources :favorites
 
   map.root :controller => "projectiles", :action => "index"
@@ -23,7 +23,7 @@ ActionController::Routing::Routes.draw do |map|
     members.resources :users, :only => [:show, :edit, :update]
     members.resources :projectiles, 
                       :only => [:edit, :update, :new, :create, :destroy],
-                      :collection => { :my_projectiles => :get, :my_favorites => :get}
+                      :collection => { :my_projectiles => :get, :my_favorites => :get }
     members.root :controller => 'members', :action => 'index'
   
   end

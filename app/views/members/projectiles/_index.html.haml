@@ -23,5 +23,7 @@
           = link_to image_tag('icon_small_delete.png'), members_projectile_path(projectile), :confirm => 'Are you sure?', :method => :delete
       - if current_user
         = render :partial => 'projectiles/favbutton', :locals => { :projectile => projectile, :current_user => @current_user }
-      %p.description
+      %p.descriptionShort{:id => 'desc_short_' + projectile.id.to_s }
         = truncateDescription( projectile )
+      %p.fullDescription{:id => 'descript_' + projectile.id.to_s}
+        = projectile.description
