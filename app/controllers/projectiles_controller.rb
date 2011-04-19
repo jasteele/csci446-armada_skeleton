@@ -46,4 +46,8 @@ class ProjectilesController < ApplicationController
     flash[:notice] = "Successfully destroyed projectile."
     redirect_to projectiles_url
   end
+
+  def description
+    @projectile = Projectile.find(params[:id])  
+  end
 end
