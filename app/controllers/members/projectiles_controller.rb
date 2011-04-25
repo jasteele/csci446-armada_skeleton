@@ -46,13 +46,13 @@ class Members::ProjectilesController < Members::MembersController
   end
 
   def my_projectiles
-    @projectile = Projectile.paginate(:page => params[:page], :per_page => 5, :conditions => "user_id = #{current_user.id}")
+    @projectile = Projectile.paginate(:page => params[:page], :per_page => 5, :conditions => "user_id = #{current_user.id}", :order => 'created_at DESC')
     @num_projectiles = Projectile.count(:conditions =>"user_id = #{current_user.id}")
     #@projectile = Projectile.find(:all, :conditions => "user_id = #{current_user.id}")  
   end
 
   def my_favorites
-    @projectile = Projectile.paginate(:page => params[:page], :per_page => 5, :conditions => "favorites.user_id = #{current_user.id}", :include => :favorites)
+    @projectile = Projectile.paginate(:page => params[:page], :per_page => 5, :conditions => "favorites.user_id = #{current_user.id}", :include => :favorites, :order => 'created_at DESC')
     @num_projectiles = Projectile.count(:conditions => "favorites.user_id = #{current_user.id}", :include => :favorites)
   end
 end
