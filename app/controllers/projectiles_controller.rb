@@ -7,12 +7,16 @@ class ProjectilesController < ApplicationController
     @num_projectiles = Projectile.count
     respond_to do |format|
       format.html
-      format.xml { render :xml => Projectile.all }
+      format.xml { render :xml => Projectile.all(:order => 'created_at DESC') }
     end
   end
 
   def show
     #@projectile = Projectile.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @projectile}
+    end
   end
 
   def new
