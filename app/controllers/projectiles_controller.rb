@@ -5,6 +5,10 @@ class ProjectilesController < ApplicationController
   def index
     @projectile = Projectile.paginate(:page => params[:page], :per_page => 5, :order => 'created_at DESC')
     @num_projectiles = Projectile.count
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => Projectile.all }
+    end
   end
 
   def show
